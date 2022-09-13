@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { getCharacters } from '../services/rickMortyapi';
 
 export const useCharacters = () => {
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    fetch()
+    getCharacters()
+      .then(data => setCharacters(data))
+      .finally(() => setLoading(false));
   }, []);
 
   return {
