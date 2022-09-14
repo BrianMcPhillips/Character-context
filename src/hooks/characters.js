@@ -1,16 +1,23 @@
 import { useContext, useEffect, useState } from 'react';
 import { CharacterContext } from '../context/CharacterContext';
-import { getCharacters } from '../services/rickMortyapi';
+import { getRMCharacters } from '../services/rickMortyapi';
+import { getBBCharacters } from '../services/breakingBadapi';
 
 export const useCharacters = () => {
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
+  const characterType = useCharacterType();
+
+  const serviceMap = {
+    rickAndMorty: getRMCharacters,
+    breakingBad: getBBCharacters
+  };
 
   useEffect(() => {
-    getCharacters()
+    serviceMap[characterType]()
       .then(data => setCharacters(data))
       .finally(() => setLoading(false));
-  }, []);
+  }, [characterType]);
 
   return {
     loading,
