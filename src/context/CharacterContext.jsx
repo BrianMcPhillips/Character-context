@@ -8,7 +8,8 @@ export const CharacterProvider = ({ children }) => {
 
   const toggle = () => {
     setCharacterType(oldType => {
-      oldType === 'rickAndMorty' ? 'breakingBad' : 'rickAndMorty';
+      if(oldType === 'rickAndMorty') return 'breakingBad';
+      return 'rickAndMorty';
     });
   };
 

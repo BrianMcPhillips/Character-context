@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <div>
-        <button onClick={toggle()}>Toggle Character List</button>
+        <button onClick={toggle}>Toggle Character List</button>
       </div>
     </header>
   );
