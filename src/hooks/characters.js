@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { CharacterContext } from '../context/CharacterContext';
 import { getCharacters } from '../services/rickMortyapi';
 
 export const useCharacters = () => {
@@ -15,4 +16,14 @@ export const useCharacters = () => {
     loading,
     characters
   };
+};
+
+export const useCharacterToggle = () => {
+  const { toggle } = useContext(CharacterContext);
+  return toggle;
+};
+
+export const useCharacterType = () => {
+  const { characterType } = useContext(CharacterContext);
+  return characterType;
 };
